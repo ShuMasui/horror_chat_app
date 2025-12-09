@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:horror_chat_app/data/chats_info.dart';
 import 'package:horror_chat_app/data/friends.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:horror_chat_app/state/s_chats_state.dart';
+import 'package:horror_chat_app/state/s_friend_state.dart';
 
 class PreviewWidget extends ConsumerWidget {
   final Friends friend;
@@ -50,7 +49,7 @@ class PreviewWidget extends ConsumerWidget {
                     ),
                   ),
                   Align(
-                    alignment: AlignmentGeometry.center,
+                    alignment: AlignmentGeometry.centerLeft,
                     child: Text(
                       friend.discription,
                       style: TextStyle(
@@ -65,15 +64,8 @@ class PreviewWidget extends ConsumerWidget {
           ),
           ElevatedButton(
             onPressed: () {
-              final notifier = ref.read(sChatsStateProvider.notifier);
-              notifier.updateState(
-                ChatsInfo(
-                  friend: friend,
-                  isUser: false,
-                  text: friend.lastMessage,
-                  date: friend.lastUpdate,
-                ),
-              );
+              final notifier = ref.read(sFriendStateProvider.notifier);
+              notifier.updateState(friend);
               context.go('/chat');
             },
             child: Text('このコで遊ぶ'),

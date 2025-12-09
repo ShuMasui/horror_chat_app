@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 's_chats_state.dart';
+part of 's_friend_state.dart';
 
 // **************************************************************************
 // RiverpodGenerator
@@ -9,52 +9,52 @@ part of 's_chats_state.dart';
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint, type=warning
 
-@ProviderFor(SChatsState)
-const sChatsStateProvider = SChatsStateProvider._();
+@ProviderFor(SFriendState)
+const sFriendStateProvider = SFriendStateProvider._();
 
-final class SChatsStateProvider
-    extends $NotifierProvider<SChatsState, List<ChatsInfo>> {
-  const SChatsStateProvider._()
+final class SFriendStateProvider
+    extends $NotifierProvider<SFriendState, Friends> {
+  const SFriendStateProvider._()
     : super(
         from: null,
         argument: null,
         retry: null,
-        name: r'sChatsStateProvider',
+        name: r'sFriendStateProvider',
         isAutoDispose: true,
         dependencies: null,
         $allTransitiveDependencies: null,
       );
 
   @override
-  String debugGetCreateSourceHash() => _$sChatsStateHash();
+  String debugGetCreateSourceHash() => _$sFriendStateHash();
 
   @$internal
   @override
-  SChatsState create() => SChatsState();
+  SFriendState create() => SFriendState();
 
   /// {@macro riverpod.override_with_value}
-  Override overrideWithValue(List<ChatsInfo> value) {
+  Override overrideWithValue(Friends value) {
     return $ProviderOverride(
       origin: this,
-      providerOverride: $SyncValueProvider<List<ChatsInfo>>(value),
+      providerOverride: $SyncValueProvider<Friends>(value),
     );
   }
 }
 
-String _$sChatsStateHash() => r'2a53f7b814eb006563f9055e147818f8d9f82854';
+String _$sFriendStateHash() => r'19483b75f85c93401fa4a6a77c3f8120ad39804c';
 
-abstract class _$SChatsState extends $Notifier<List<ChatsInfo>> {
-  List<ChatsInfo> build();
+abstract class _$SFriendState extends $Notifier<Friends> {
+  Friends build();
   @$mustCallSuper
   @override
   void runBuild() {
     final created = build();
-    final ref = this.ref as $Ref<List<ChatsInfo>, List<ChatsInfo>>;
+    final ref = this.ref as $Ref<Friends, Friends>;
     final element =
         ref.element
             as $ClassProviderElement<
-              AnyNotifier<List<ChatsInfo>, List<ChatsInfo>>,
-              List<ChatsInfo>,
+              AnyNotifier<Friends, Friends>,
+              Friends,
               Object?,
               Object?
             >;

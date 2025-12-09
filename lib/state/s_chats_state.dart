@@ -11,6 +11,8 @@ class SChatsState extends _$SChatsState {
   }
 
   void updateState(ChatsInfo c) {
-    state = [...state, c];
+    final oldState = state;
+    final newState = [...oldState, c];
+    state = newState;
   }
 }
