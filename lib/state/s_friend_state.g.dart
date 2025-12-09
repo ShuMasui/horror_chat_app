@@ -20,7 +20,7 @@ final class SFriendStateProvider
         argument: null,
         retry: null,
         name: r'sFriendStateProvider',
-        isAutoDispose: true,
+        isAutoDispose: false,
         dependencies: null,
         $allTransitiveDependencies: null,
       );
@@ -41,7 +41,7 @@ final class SFriendStateProvider
   }
 }
 
-String _$sFriendStateHash() => r'19483b75f85c93401fa4a6a77c3f8120ad39804c';
+String _$sFriendStateHash() => r'e7d0a547432274f4aee21a2b1dce58cc685b01ad';
 
 abstract class _$SFriendState extends $Notifier<Friends> {
   Friends build();

@@ -3,16 +3,21 @@ import 'package:horror_chat_app/data/friends.dart';
 
 part 's_friend_state.g.dart';
 
-@riverpod
+@Riverpod(keepAlive: true)
 class SFriendState extends _$SFriendState {
-
   @override
   Friends build() {
-    return Friends(id: '', name: '', lastMessage: '', imageUrl: '', lastUpdate: DateTime.now(), discription: '');
+    return Friends(
+      id: '',
+      name: '',
+      lastMessage: '',
+      imageUrl: '',
+      lastUpdate: DateTime.now(),
+      discription: '',
+    );
   }
 
   void updateState(Friends f) {
     state = f;
   }
-
 }
