@@ -2,13 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:horror_chat_app/data/friends.dart';
 
 class PreviewWidget extends StatelessWidget {
-
   final Friends friend;
 
-  const PreviewWidget({
-    super.key,
-    required this.friend
-    });
+  const PreviewWidget({super.key, required this.friend});
 
   @override
   Widget build(BuildContext context) {
@@ -19,12 +15,14 @@ class PreviewWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           SizedBox(
-            width: size.width*.8,
+            width: size.width * .8,
             height: 300,
             child: Container(
               decoration: BoxDecoration(
                 color: Theme.of(context).canvasColor,
-                border: BoxBorder.all(color: Theme.of(context).colorScheme.secondary),
+                border: BoxBorder.all(
+                  color: Theme.of(context).colorScheme.secondary,
+                ),
               ),
               child: Stack(
                 children: [
@@ -34,7 +32,7 @@ class PreviewWidget extends StatelessWidget {
                     child: Padding(
                       padding: const EdgeInsets.all(20.0),
                       child: Text('説明文'),
-                    ) 
+                    ),
                   ),
                   Positioned(
                     left: 0,
@@ -43,20 +41,27 @@ class PreviewWidget extends StatelessWidget {
                       padding: const EdgeInsets.all(10.0),
                       child: SizedBox(
                         width: 90,
-                        child: Image.asset(friend.imageUrl)
+                        child: Image.asset(friend.imageUrl),
                       ),
-                    )
+                    ),
+                  ),
+                  Align(
+                    alignment: AlignmentGeometry.center,
+                    child: Text(
+                      friend.discription,
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                   ),
                 ],
               ),
             ),
           ),
-          ElevatedButton(
-            onPressed: (){}, 
-            child: Text('このコで遊ぶ')
-          ),
+          ElevatedButton(onPressed: () {}, child: Text('このコで遊ぶ')),
         ],
-      ),  
+      ),
     );
     return widget;
   }
