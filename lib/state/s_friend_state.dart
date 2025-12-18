@@ -14,6 +14,7 @@ class SFriendState extends _$SFriendState {
       imageUrl: '',
       lastUpdate: DateTime.now(),
       discription: '',
+      initialPrompt: ''
     );
   }
 

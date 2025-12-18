@@ -11,5 +11,6 @@ abstract class Friends with _$Friends {
     required String imageUrl,
     required DateTime lastUpdate,
     required String discription,
+    required String initialPrompt
   }) = _Friends;
 }

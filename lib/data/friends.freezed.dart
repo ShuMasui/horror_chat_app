@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$Friends {
 
- String get id; String get name; String get lastMessage; String get imageUrl; DateTime get lastUpdate; String get discription;
+ String get id; String get name; String get lastMessage; String get imageUrl; DateTime get lastUpdate; String get discription; String get initialPrompt;
 /// Create a copy of Friends
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -25,16 +25,16 @@ $FriendsCopyWith<Friends> get copyWith => _$FriendsCopyWithImpl<Friends>(this as
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Friends&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.lastMessage, lastMessage) || other.lastMessage == lastMessage)&&(identical(other.imageUrl, imageUrl) || other.imageUrl == imageUrl)&&(identical(other.lastUpdate, lastUpdate) || other.lastUpdate == lastUpdate)&&(identical(other.discription, discription) || other.discription == discription));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Friends&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.lastMessage, lastMessage) || other.lastMessage == lastMessage)&&(identical(other.imageUrl, imageUrl) || other.imageUrl == imageUrl)&&(identical(other.lastUpdate, lastUpdate) || other.lastUpdate == lastUpdate)&&(identical(other.discription, discription) || other.discription == discription)&&(identical(other.initialPrompt, initialPrompt) || other.initialPrompt == initialPrompt));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,id,name,lastMessage,imageUrl,lastUpdate,discription);
+int get hashCode => Object.hash(runtimeType,id,name,lastMessage,imageUrl,lastUpdate,discription,initialPrompt);
 
 @override
 String toString() {
-  return 'Friends(id: $id, name: $name, lastMessage: $lastMessage, imageUrl: $imageUrl, lastUpdate: $lastUpdate, discription: $discription)';
+  return 'Friends(id: $id, name: $name, lastMessage: $lastMessage, imageUrl: $imageUrl, lastUpdate: $lastUpdate, discription: $discription, initialPrompt: $initialPrompt)';
 }
 
 
@@ -45,7 +45,7 @@ abstract mixin class $FriendsCopyWith<$Res>  {
   factory $FriendsCopyWith(Friends value, $Res Function(Friends) _then) = _$FriendsCopyWithImpl;
 @useResult
 $Res call({
- String id, String name, String lastMessage, String imageUrl, DateTime lastUpdate, String discription
+ String id, String name, String lastMessage, String imageUrl, DateTime lastUpdate, String discription, String initialPrompt
 });
 
 
@@ -62,7 +62,7 @@ class _$FriendsCopyWithImpl<$Res>
 
 /// Create a copy of Friends
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? name = null,Object? lastMessage = null,Object? imageUrl = null,Object? lastUpdate = null,Object? discription = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? name = null,Object? lastMessage = null,Object? imageUrl = null,Object? lastUpdate = null,Object? discription = null,Object? initialPrompt = null,}) {
   return _then(_self.copyWith(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
@@ -70,6 +70,7 @@ as String,lastMessage: null == lastMessage ? _self.lastMessage : lastMessage // 
 as String,imageUrl: null == imageUrl ? _self.imageUrl : imageUrl // ignore: cast_nullable_to_non_nullable
 as String,lastUpdate: null == lastUpdate ? _self.lastUpdate : lastUpdate // ignore: cast_nullable_to_non_nullable
 as DateTime,discription: null == discription ? _self.discription : discription // ignore: cast_nullable_to_non_nullable
+as String,initialPrompt: null == initialPrompt ? _self.initialPrompt : initialPrompt // ignore: cast_nullable_to_non_nullable
 as String,
   ));
 }
@@ -155,10 +156,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String name,  String lastMessage,  String imageUrl,  DateTime lastUpdate,  String discription)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String id,  String name,  String lastMessage,  String imageUrl,  DateTime lastUpdate,  String discription,  String initialPrompt)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Friends() when $default != null:
-return $default(_that.id,_that.name,_that.lastMessage,_that.imageUrl,_that.lastUpdate,_that.discription);case _:
+return $default(_that.id,_that.name,_that.lastMessage,_that.imageUrl,_that.lastUpdate,_that.discription,_that.initialPrompt);case _:
   return orElse();
 
 }
@@ -176,10 +177,10 @@ return $default(_that.id,_that.name,_that.lastMessage,_that.imageUrl,_that.lastU
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String name,  String lastMessage,  String imageUrl,  DateTime lastUpdate,  String discription)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String id,  String name,  String lastMessage,  String imageUrl,  DateTime lastUpdate,  String discription,  String initialPrompt)  $default,) {final _that = this;
 switch (_that) {
 case _Friends():
-return $default(_that.id,_that.name,_that.lastMessage,_that.imageUrl,_that.lastUpdate,_that.discription);case _:
+return $default(_that.id,_that.name,_that.lastMessage,_that.imageUrl,_that.lastUpdate,_that.discription,_that.initialPrompt);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -196,10 +197,10 @@ return $default(_that.id,_that.name,_that.lastMessage,_that.imageUrl,_that.lastU
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String name,  String lastMessage,  String imageUrl,  DateTime lastUpdate,  String discription)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String id,  String name,  String lastMessage,  String imageUrl,  DateTime lastUpdate,  String discription,  String initialPrompt)?  $default,) {final _that = this;
 switch (_that) {
 case _Friends() when $default != null:
-return $default(_that.id,_that.name,_that.lastMessage,_that.imageUrl,_that.lastUpdate,_that.discription);case _:
+return $default(_that.id,_that.name,_that.lastMessage,_that.imageUrl,_that.lastUpdate,_that.discription,_that.initialPrompt);case _:
   return null;
 
 }
@@ -211,7 +212,7 @@ return $default(_that.id,_that.name,_that.lastMessage,_that.imageUrl,_that.lastU
 
 
 class _Friends implements Friends {
-  const _Friends({required this.id, required this.name, required this.lastMessage, required this.imageUrl, required this.lastUpdate, required this.discription});
+  const _Friends({required this.id, required this.name, required this.lastMessage, required this.imageUrl, required this.lastUpdate, required this.discription, required this.initialPrompt});
   
 
 @override final  String id;
@@ -220,6 +221,7 @@ class _Friends implements Friends {
 @override final  String imageUrl;
 @override final  DateTime lastUpdate;
 @override final  String discription;
+@override final  String initialPrompt;
 
 /// Create a copy of Friends
 /// with the given fields replaced by the non-null parameter values.
@@ -231,16 +233,16 @@ _$FriendsCopyWith<_Friends> get copyWith => __$FriendsCopyWithImpl<_Friends>(thi
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Friends&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.lastMessage, lastMessage) || other.lastMessage == lastMessage)&&(identical(other.imageUrl, imageUrl) || other.imageUrl == imageUrl)&&(identical(other.lastUpdate, lastUpdate) || other.lastUpdate == lastUpdate)&&(identical(other.discription, discription) || other.discription == discription));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Friends&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.lastMessage, lastMessage) || other.lastMessage == lastMessage)&&(identical(other.imageUrl, imageUrl) || other.imageUrl == imageUrl)&&(identical(other.lastUpdate, lastUpdate) || other.lastUpdate == lastUpdate)&&(identical(other.discription, discription) || other.discription == discription)&&(identical(other.initialPrompt, initialPrompt) || other.initialPrompt == initialPrompt));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,id,name,lastMessage,imageUrl,lastUpdate,discription);
+int get hashCode => Object.hash(runtimeType,id,name,lastMessage,imageUrl,lastUpdate,discription,initialPrompt);
 
 @override
 String toString() {
-  return 'Friends(id: $id, name: $name, lastMessage: $lastMessage, imageUrl: $imageUrl, lastUpdate: $lastUpdate, discription: $discription)';
+  return 'Friends(id: $id, name: $name, lastMessage: $lastMessage, imageUrl: $imageUrl, lastUpdate: $lastUpdate, discription: $discription, initialPrompt: $initialPrompt)';
 }
 
 
@@ -251,7 +253,7 @@ abstract mixin class _$FriendsCopyWith<$Res> implements $FriendsCopyWith<$Res> {
   factory _$FriendsCopyWith(_Friends value, $Res Function(_Friends) _then) = __$FriendsCopyWithImpl;
 @override @useResult
 $Res call({
- String id, String name, String lastMessage, String imageUrl, DateTime lastUpdate, String discription
+ String id, String name, String lastMessage, String imageUrl, DateTime lastUpdate, String discription, String initialPrompt
 });
 
 
@@ -268,7 +270,7 @@ class __$FriendsCopyWithImpl<$Res>
 
 /// Create a copy of Friends
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? name = null,Object? lastMessage = null,Object? imageUrl = null,Object? lastUpdate = null,Object? discription = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? name = null,Object? lastMessage = null,Object? imageUrl = null,Object? lastUpdate = null,Object? discription = null,Object? initialPrompt = null,}) {
   return _then(_Friends(
 id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
 as String,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
@@ -276,6 +278,7 @@ as String,lastMessage: null == lastMessage ? _self.lastMessage : lastMessage // 
 as String,imageUrl: null == imageUrl ? _self.imageUrl : imageUrl // ignore: cast_nullable_to_non_nullable
 as String,lastUpdate: null == lastUpdate ? _self.lastUpdate : lastUpdate // ignore: cast_nullable_to_non_nullable
 as DateTime,discription: null == discription ? _self.discription : discription // ignore: cast_nullable_to_non_nullable
+as String,initialPrompt: null == initialPrompt ? _self.initialPrompt : initialPrompt // ignore: cast_nullable_to_non_nullable
 as String,
   ));
 }

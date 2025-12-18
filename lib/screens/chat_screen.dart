@@ -1,8 +1,7 @@
-import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:horror_chat_app/theme.dart';
+import 'package:horror_chat_app/widgets/left_loading_bubble.dart';
 import 'package:horror_chat_app/widgets/left_normal_bubble.dart';
 import 'package:horror_chat_app/widgets/right_normal_bubble.dart';
 
@@ -15,87 +14,9 @@ void main() {
   runApp(
     MaterialApp(
       theme: themeData,
-      home: ChatScreen(onTap: () {}, children: children),
+      home: ChatScreen(onTap: () {}, children: children, textEditingController: TextEditingController(),),
     ),
   );
-}
-
-class LeftLoadingBubble extends StatefulWidget {
-  const LeftLoadingBubble({super.key});
-
-  @override
-  State<LeftLoadingBubble> createState() => _LeftLoadingBubbleState();
-}
-
-class _LeftLoadingBubbleState extends State<LeftLoadingBubble> {
-  String _text = '';
-  int _currentIndex = 0;
-  int _cnt = 0;
-  Timer? _timer;
-
-  Future<void> startTyping() async {
-    _timer = Timer.periodic(Duration(milliseconds: 300), (_) {
-      if (_cnt < 3) {
-        if (_currentIndex < 4) {
-          setState(() {
-            _text += '・';
-            _currentIndex++;
-          });
-        } else {
-          setState(() {
-            _text = '';
-            _currentIndex = 0;
-            _cnt++;
-          });
-        }
-      } else {
-        _timer?.cancel();
-      }
-    });
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    startTyping();
-  }
-
-  @override
-  void dispose() {
-    _timer?.cancel();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Align(
-      alignment: Alignment.centerLeft,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 5.0, horizontal: 15),
-        child: Container(
-          decoration: BoxDecoration(
-            color: Theme.of(context).colorScheme.primary,
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(12),
-              topRight: Radius.circular(12),
-              bottomRight: Radius.circular(12),
-            ),
-          ),
-          constraints: BoxConstraints(
-            maxWidth: MediaQuery.of(context).size.width * 0.7,
-          ),
-          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
-          child: Text(
-            _text,
-            style: TextStyle(
-              color: Theme.of(context).colorScheme.onPrimary,
-              fontSize: 12,
-            ),
-          ),
-        ),
-      ),
-    );
-  }
 }
 
 /// チャットバブルの生成をGameFlowManagerの方に任せよう
@@ -104,26 +25,15 @@ class _LeftLoadingBubbleState extends State<LeftLoadingBubble> {
 class ChatScreen extends StatefulWidget {
   final VoidCallback onTap;
   final List<Widget> children;
+  final TextEditingController textEditingController;
 
-  const ChatScreen({super.key, required this.onTap, required this.children});
+  const ChatScreen({super.key, required this.onTap, required this.textEditingController, required this.children,});
 
   @override
   State<ChatScreen> createState() => _ChatScreenState();
 }
 
 class _ChatScreenState extends State<ChatScreen> {
-  final TextEditingController _textEditingController = TextEditingController();
-
-  @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    _textEditingController.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -168,7 +78,9 @@ class _ChatScreenState extends State<ChatScreen> {
                           border: InputBorder.none,
                           hintText: 'Type a message...',
                         ),
-                        controller: _textEditingController,
+                        autofocus: true,
+                        onEditingComplete: widget.onTap,
+                        controller: widget.textEditingController,
                       ),
                     ),
                   ),

@@ -41,7 +41,7 @@ final class SFriendStateProvider
   }
 }
 
-String _$sFriendStateHash() => r'e7d0a547432274f4aee21a2b1dce58cc685b01ad';
+String _$sFriendStateHash() => r'7fda9c78b3b74e1755fc92a921ade20a78c120dc';
 
 abstract class _$SFriendState extends $Notifier<Friends> {
   Friends build();
