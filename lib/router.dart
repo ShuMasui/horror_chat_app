@@ -1,7 +1,7 @@
 import 'package:go_router/go_router.dart';
 import 'package:flutter/material.dart';
+import 'package:horror_chat_app/game_flow_manager.dart';
 
-import 'package:horror_chat_app/screens/chat_screen.dart';
 import 'package:horror_chat_app/screens/initial_screen.dart';
 import 'package:horror_chat_app/screens/home_screen.dart';
 
@@ -23,10 +23,10 @@ final goRouter = GoRouter(
       },
     ),
     GoRoute(
-      path: '/chat',
-      name: 'chat',
+      path: '/game',
+      name: 'game',
       pageBuilder: (context, state) {
-        return MaterialPage(key: state.pageKey, child: ChatScreen());
+        return MaterialPage(key: state.pageKey, child: GameFlowManager());
       },
     ),
   ],

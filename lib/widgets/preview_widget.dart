@@ -66,7 +66,7 @@ class PreviewWidget extends ConsumerWidget {
             onPressed: () {
               final notifier = ref.read(sFriendStateProvider.notifier);
               notifier.updateState(friend);
-              context.go('/chat');
+              context.go('/game');
             },
             child: Text('このコで遊ぶ'),
           ),

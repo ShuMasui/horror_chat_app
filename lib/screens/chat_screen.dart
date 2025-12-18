@@ -1,18 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:horror_chat_app/data/friends.dart';
 
-import 'package:horror_chat_app/state/s_friend_state.dart';
-
-class ChatScreen extends ConsumerWidget {
-  const ChatScreen({super.key});
+class ChatScreen extends StatefulWidget {
+  final VoidCallback onTap;
+  const ChatScreen({super.key, required this.onTap});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final friend = ref.watch(sFriendStateProvider);
+  State<ChatScreen> createState() => _ChatScreenState();
+}
 
-    debugPrint(friend.name);
-
-    return const Placeholder();
+class _ChatScreenState extends State<ChatScreen> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text('ChatScreen')),
+      body: Center(
+        child: ElevatedButton(onPressed: widget.onTap, child: Text('shake')),
+      ),
+    );
   }
 }
