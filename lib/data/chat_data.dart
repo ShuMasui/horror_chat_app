@@ -1,4 +1,4 @@
-import 'package:horror_chat_app/data/chat_type.dart';
+enum ChatType { none, right, left, loading }
 
 class ChatData {
   final ChatType chatType;

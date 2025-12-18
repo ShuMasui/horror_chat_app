@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:horror_chat_app/data/chat_state.dart';
+import 'package:horror_chat_app/data/chat_data.dart';
 import 'package:horror_chat_app/game/effect_shake_screen.dart';
 import 'package:horror_chat_app/screens/chat_screen.dart';
+import 'package:horror_chat_app/widgets/left_normal_bubble.dart';
+import 'package:horror_chat_app/widgets/right_normal_bubble.dart';
 
 enum EffectType { none, shake }
 
@@ -40,7 +42,13 @@ class _GameFlowManagerState extends State<GameFlowManager> {
   }
 
   Widget buildEffect(BuildContext context) {
-    final ChatScreen chat = ChatScreen(onTap: _handleOnTap);
+    final ChatScreen chat = ChatScreen(
+      onTap: _handleOnTap,
+      children: <Widget>[
+        LeftNormalBubble(message: 'test'),
+        RightNormalBubble(message: 'test'),
+      ],
+    );
 
     switch (_effectType) {
       case EffectType.none:
