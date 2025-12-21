@@ -14,7 +14,7 @@ void main() {
   runApp(
     MaterialApp(
       theme: themeData,
-      home: ChatScreen(onTap: () {}, children: children, textEditingController: TextEditingController(),),
+      home: ChatScreen(onTap: () {}, textEditingController: TextEditingController(), children: children,),
     ),
   );
 }
@@ -54,33 +54,33 @@ class _ChatScreenState extends State<ChatScreen> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 0),
-            child: Container(
-              height: 56,
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 16),
+            child: SizedBox(
+              height: 64,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Icon(Icons.camera_alt),
-                  Container(
-                    width: 300,
-                    height: 40,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(50),
-                      color: Colors.grey.shade500,
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 16,
-                        vertical: 4,
+                  IconButton(onPressed: () {}, icon: Icon(Icons.camera_alt)),
+                  Expanded(
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(50),
+                        color: Colors.grey.shade500,
                       ),
-                      child: TextField(
-                        decoration: InputDecoration(
-                          border: InputBorder.none,
-                          hintText: 'Type a message...',
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 16,
+                          vertical: 0,
                         ),
-                        autofocus: true,
-                        onEditingComplete: widget.onTap,
-                        controller: widget.textEditingController,
+                        child: TextField(
+                          decoration: InputDecoration(
+                            border: InputBorder.none,
+                            hintText: 'Type a message...',
+                          ),
+                          autofocus: true,
+                          onEditingComplete: widget.onTap,
+                          controller: widget.textEditingController,
+                        ),
                       ),
                     ),
                   ),

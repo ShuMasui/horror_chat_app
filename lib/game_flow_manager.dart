@@ -52,9 +52,9 @@ class _GameFlowManagerState extends ConsumerState<GameFlowManager> {
 
     final response = await _googleAiService.sendMessage(tmp.message);
 
-    _chatState.add(ChatData(chatType: ChatType.left, message: response));
+    _chatState.add(ChatData(chatType: ChatType.left, message: response.message));
 
-    setState(() {_chatBubble = [LeftNormalBubble(message: response), ..._chatBubble];});
+    setState(() {_chatBubble = [LeftNormalBubble(message: response.message), ..._chatBubble];});
 
     processGame();
   }
