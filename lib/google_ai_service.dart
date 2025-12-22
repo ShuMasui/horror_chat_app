@@ -29,10 +29,10 @@ class GoogleAiService {
       _chatSession = _model.startChat(history: [Content.text('"Act as someone who is extremely emotionally dependent and "clingy" in a text chat. Write a series of messages to a partner who hasn\'t replied for 2 hours. The tone should be a mix of deep affection, extreme anxiety, and subtle guilt-tripping. Use repetitive phrasing, frequent ellipses (...), and ask questions like \'Are you tired of me?\' or \'Did I do something wrong?\'"response must be 100 characters and in Japanese')]);
     } else {
       _chatSession = _model.startChat(history: [Content.text('''$initialPrompt{
-  "currentScene": "{Current Flag Code}",
-  "nextScene": "SCENE_X_Y", 
-  "message": "最初の1文\n次の1文\n..."
-}''')]);
+        "currentScene": "{Current Flag Code}",
+        "nextScene": "SCENE_X_Y", 
+        "message": "最初の1文\n次の1文\n..."
+      }''')]);
     }
   }
 
