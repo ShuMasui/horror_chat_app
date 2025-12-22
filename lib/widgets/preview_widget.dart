@@ -49,7 +49,7 @@ class PreviewWidget extends ConsumerWidget {
                     ),
                   ),
                   Align(
-                    alignment: AlignmentGeometry.centerLeft,
+                    alignment: AlignmentGeometry.center,
                     child: Text(
                       friend.discription,
                       style: TextStyle(

@@ -5,7 +5,7 @@ import 'package:horror_chat_app/router.dart';
 
 import 'package:horror_chat_app/theme.dart';
 
-/// Entry Point of Horror Chat App
+/// Entry Point of Horror Chat                                                       
 Future<void> main() async {
   await dotenv.load(fileName: '.env');
   final app = ProviderScope(

@@ -81,14 +81,17 @@ class _HomeScreenState extends State<HomeScreen> {
     final children = [
       PreviewWidget(friend: _frined),
       Expanded(
-        child: ListView.builder(
-          itemCount: friendMock.length,
-          itemBuilder: (c, i) => itemBuilder(c, i),
+        child: ScrollConfiguration(
+          behavior: ScrollBehavior().copyWith(overscroll: false),
+          child: ListView.builder(
+            itemCount: friendMock.length,
+            itemBuilder: (c, i) => itemBuilder(c, i),
+          ),
         ),
       ),
     ];
     final body = Padding(
-      padding: const EdgeInsets.all(10.0),
+      padding: const EdgeInsets.all(0.0),
       child: Container(
         decoration: BoxDecoration(color: Theme.of(context).primaryColor),
         child: SafeArea(

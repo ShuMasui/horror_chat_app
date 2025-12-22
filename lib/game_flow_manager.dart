@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:horror_chat_app/data/chat_data.dart';
+import 'package:horror_chat_app/game/effect_rotate_screen.dart';
 import 'package:horror_chat_app/game/effect_shake_screen.dart';
 import 'package:horror_chat_app/google_ai_service.dart';
 import 'package:horror_chat_app/screens/chat_screen.dart';
@@ -9,7 +10,7 @@ import 'package:horror_chat_app/state/s_friend_state.dart';
 import 'package:horror_chat_app/widgets/left_normal_bubble.dart';
 import 'package:horror_chat_app/widgets/right_normal_bubble.dart';
 
-enum EffectType { none, shake }
+enum EffectType { none, shake, rotate }
 
 class GameFlowManager extends ConsumerStatefulWidget {
   const GameFlowManager({super.key});
@@ -38,7 +39,7 @@ class _GameFlowManagerState extends ConsumerState<GameFlowManager> {
   void processGame() {
 
     setState(() {
-      _effectType = EffectType.none;
+      _effectType = EffectType.rotate;
     });
   }
 
@@ -52,9 +53,9 @@ class _GameFlowManagerState extends ConsumerState<GameFlowManager> {
 
     final response = await _googleAiService.sendMessage(tmp.message);
 
-    _chatState.add(ChatData(chatType: ChatType.left, message: response));
+    _chatState.add(ChatData(chatType: ChatType.left, message: response.message));
 
-    setState(() {_chatBubble = [LeftNormalBubble(message: response), ..._chatBubble];});
+    setState(() {_chatBubble = [LeftNormalBubble(message: response.message), ..._chatBubble];});
 
     processGame();
   }
@@ -79,6 +80,11 @@ class _GameFlowManagerState extends ConsumerState<GameFlowManager> {
         return EffectShakeScreen(
           onAnimationCompleted: _handleAnimationCompleted,
           child: chat,
+        );
+      case EffectType.rotate:
+        return EffectRotateScreen(
+          onAnimationCompleted: _handleAnimationCompleted,
+          child: chat
         );
     }
   }
