@@ -94,11 +94,9 @@ class _HomeScreenState extends State<HomeScreen> {
       padding: const EdgeInsets.all(0.0),
       child: Container(
         decoration: BoxDecoration(color: Theme.of(context).primaryColor),
-        child: SafeArea(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: children,
-          ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: children,
         ),
       ),
     );
