@@ -1,6 +1,7 @@
 # Title
 AL2025 後期 8班 ホラーチャットアプリ サマリー
 
+
 # Installization
 インストール方法は二つあります
 
@@ -17,7 +18,7 @@ GEMINI_API_KEY={YourApiKey}
 ```
 5. この状態で起動
 6. 実行するコマンドは次のとおりです．
-```cmd
+```bash
 % git clone https://github.com/ShuMasui/horror_chat_app.git
 % flutter pub get
 % touch .env
