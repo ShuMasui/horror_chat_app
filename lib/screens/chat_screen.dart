@@ -4,16 +4,18 @@ import 'package:flutter/material.dart';
 /// するとアニ<メーション付きチャットバブルの生成を完全にそっちに任せられる
 /// こっちは生成されたものを描画するだけの仕組みにする
 class ChatScreen extends StatefulWidget {
-  final VoidCallback onTap;
+  final VoidCallback? onTap;
   final List<Widget> children;
   final TextEditingController textEditingController;
   final String? backGroundImageUrl;
+  final String name;
 
   const ChatScreen({
     super.key,
     required this.onTap,
     required this.textEditingController,
     this.backGroundImageUrl,
+    required this.name,
     required this.children,
   });
 
@@ -82,7 +84,7 @@ class _ChatScreenState extends State<ChatScreen> {
               width: MediaQuery.of(context).size.width,
               height: 50,
               child: Image(
-                image: AssetImage('assets/backgrounds/wood.jpg'),
+                image: AssetImage('backgrounds/wood.jpg'),
                 fit: BoxFit.cover,
               ),
             ),
@@ -94,9 +96,7 @@ class _ChatScreenState extends State<ChatScreen> {
     final image = SizedBox(
       height: MediaQuery.of(context).size.height,
       child: Image(
-        image: AssetImage(
-          widget.backGroundImageUrl ?? 'assets/backgrounds/chat.jpg',
-        ),
+        image: AssetImage(widget.backGroundImageUrl ?? 'backgrounds/chat.jpg'),
         fit: BoxFit.cover,
       ),
     );
@@ -107,12 +107,13 @@ class _ChatScreenState extends State<ChatScreen> {
       flexibleSpace: SizedBox(
         height: MediaQuery.of(context).size.height,
         child: Image(
-          image: AssetImage('assets/backgrounds/wood.jpg'),
+          image: AssetImage('backgrounds/wood.jpg'),
           fit: BoxFit.cover,
         ),
       ),
       backgroundColor: Colors.transparent,
-      title: Text('ChatScreen'),
+      centerTitle: false,
+      title: Text(widget.name, style: TextStyle(fontSize: 15)),
     );
 
     return Scaffold(appBar: appBar, body: body);
