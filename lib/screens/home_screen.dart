@@ -47,25 +47,28 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Image.asset(friendMock[i].imageUrl),
               ),
             ),
-            GestureDetector(
-              onTap: () {
-                HapticFeedback.mediumImpact();
-                _showDiscription(i);
-              },
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  Text(friendMock[i].name, style: TextStyle(fontSize: 10)),
-                  ConstrainedBox(
-                    constraints: BoxConstraints(maxWidth: 300),
-                    child: Text(
-                      friendMock[i].lastMessage,
-                      style: TextStyle(fontSize: 20),
+            SizedBox(width: 20, height: 20,),
+            Expanded(
+              child: GestureDetector(
+                onTap: () {
+                  HapticFeedback.mediumImpact();
+                  _showDiscription(i);
+                },
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Text(friendMock[i].name, style: TextStyle(fontSize: 10)),
+                    ConstrainedBox(
+                      constraints: BoxConstraints(maxWidth: 290),
+                      child: Text(
+                        friendMock[i].lastMessage,
+                        style: TextStyle(fontSize: 20),
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
             SizedBox(width: 30),

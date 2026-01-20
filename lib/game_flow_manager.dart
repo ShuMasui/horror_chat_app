@@ -38,9 +38,9 @@ class _GameFlowManagerState extends ConsumerState<GameFlowManager> {
 /// エフェクトの創出はここで行う
   void processGame() {
 
-    setState(() {
-      _effectType = EffectType.rotate;
-    });
+    // setState(() {
+    //   _effectType = EffectType.rotate;
+    // });
   }
 
   Future<void> _handleOnTap() async {
