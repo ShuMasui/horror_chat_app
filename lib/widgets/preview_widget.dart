@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:horror_chat_app/data/friends.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:horror_chat_app/state/s_friend_state.dart';
 
-class PreviewWidget extends StatelessWidget {
+class PreviewWidget extends ConsumerWidget {
   final Friends friend;
 
   const PreviewWidget({super.key, required this.friend});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final Size size = MediaQuery.of(context).size;
     final widget = Padding(
       padding: EdgeInsets.all(10),
@@ -59,7 +62,14 @@ class PreviewWidget extends StatelessWidget {
               ),
             ),
           ),
-          ElevatedButton(onPressed: () {}, child: Text('このコで遊ぶ')),
+          ElevatedButton(
+            onPressed: () {
+              final notifier = ref.read(sFriendStateProvider.notifier);
+              notifier.updateState(friend);
+              context.go('/game');
+            },
+            child: Text('このコで遊ぶ'),
+          ),
         ],
       ),
     );
