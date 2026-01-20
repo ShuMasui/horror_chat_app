@@ -10,7 +10,7 @@ Future<void> main() async {
   // アプリの完全な初期化を保証
   WidgetsFlutterBinding.ensureInitialized();
 
-  await dotenv.load(fileName: '.env');
+  await dotenv.load(fileName: 'env');
   final app = ProviderScope(
     child: MaterialApp.router(
       routerConfig: goRouter,

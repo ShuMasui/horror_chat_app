@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 /// チャットバブルの生成をGameFlowManagerの方に任せよう
-/// するとアニ<メーション付きチャットバブルの生成を完全にそっちに任せられる
+/// するとアニメーション付きチャットバブルの生成を完全にそっちに任せられる
 /// こっちは生成されたものを描画するだけの仕組みにする
 class ChatScreen extends StatefulWidget {
   final VoidCallback? onTap;
@@ -84,7 +84,7 @@ class _ChatScreenState extends State<ChatScreen> {
               width: MediaQuery.of(context).size.width,
               height: 50,
               child: Image(
-                image: AssetImage('backgrounds/wood.jpg'),
+                image: AssetImage('assets/backgrounds/wood.jpg'),
                 fit: BoxFit.cover,
               ),
             ),
@@ -96,7 +96,9 @@ class _ChatScreenState extends State<ChatScreen> {
     final image = SizedBox(
       height: MediaQuery.of(context).size.height,
       child: Image(
-        image: AssetImage(widget.backGroundImageUrl ?? 'backgrounds/chat.jpg'),
+        image: AssetImage(
+          widget.backGroundImageUrl ?? 'assets/backgrounds/chat.jpg',
+        ),
         fit: BoxFit.cover,
       ),
     );
@@ -107,7 +109,7 @@ class _ChatScreenState extends State<ChatScreen> {
       flexibleSpace: SizedBox(
         height: MediaQuery.of(context).size.height,
         child: Image(
-          image: AssetImage('backgrounds/wood.jpg'),
+          image: AssetImage('assets/backgrounds/wood.jpg'),
           fit: BoxFit.cover,
         ),
       ),

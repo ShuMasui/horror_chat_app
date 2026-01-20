@@ -39,7 +39,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       children: [
         Positioned(
           child: Image(
-            image: AssetImage('homescreens/homescreen.png'),
+            image: AssetImage('assets/homescreens/homescreen.png'),
             fit: BoxFit.cover,
           ),
         ),
@@ -54,7 +54,9 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                 SizedBox(height: 50),
                 SizedBox(
                   height: 25,
-                  child: Image(image: AssetImage('homescreens/hero.png')),
+                  child: Image(
+                    image: AssetImage('assets/homescreens/hero.png'),
+                  ),
                 ),
                 SizedBox(height: 50),
                 Expanded(

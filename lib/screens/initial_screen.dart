@@ -30,7 +30,7 @@ class _InitialScreenState extends State<InitialScreen> {
             height: MediaQuery.of(context).size.height,
             width: MediaQuery.of(context).size.width,
             child: Image(
-              image: AssetImage('initialscreen/initialscreen.png'),
+              image: AssetImage('assets/initialscreen/initialscreen.png'),
               fit: BoxFit.cover,
             ),
           ),
@@ -45,7 +45,7 @@ class _InitialScreenState extends State<InitialScreen> {
                 width: 250,
                 child: IconButton(
                   icon: Image(
-                    image: AssetImage('initialscreen/hazimekara.png'),
+                    image: AssetImage('assets/initialscreen/hazimekara.png'),
                     fit: BoxFit.cover,
                   ),
                   onPressed: () => handleStartButton(),
@@ -56,7 +56,7 @@ class _InitialScreenState extends State<InitialScreen> {
                 width: 250,
                 child: IconButton(
                   icon: Image(
-                    image: AssetImage('initialscreen/tudukikara.png'),
+                    image: AssetImage('assets/initialscreen/tudukikara.png'),
                     fit: BoxFit.cover,
                   ),
                   onPressed: () => handleStartButton(),
