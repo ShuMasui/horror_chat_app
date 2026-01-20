@@ -1,6 +1,90 @@
-ホラーチャットアプリ 基本設計書バージョン: 0.0.1 (Dev)作成日: 2026/01/13プラットフォーム: iOS / Android (Flutter)1. プロジェクト概要1.1. コンセプト「狂気を感じるチャット体験」を提供するホラーシミュレーションゲーム。ユーザーは架空のキャラクター（AI）とチャット形式で対話し、会話の進行によって恐怖演出やストーリー展開が変化する。1.2. 主要機能AIチャット機能: Google Gemini APIを利用した、自然かつ文脈に応じた動的な会話生成。恐怖演出: 会話の進行度や特定のフラグに応じた画面の揺れ（シェイク）、回転などの視覚効果。シナリオ進行管理: チャットレスポンスに含まれるメタデータによるシーン管理。2. 技術スタックカテゴリ技術・ライブラリ備考言語Dart (SDK ^3.10.0)フレームワークFlutter状態管理flutter_riverpodriverpod_annotation を使用ルーティングgo_router画面遷移管理AI モデルGoogle Generative AIgemini-2.5-flash-liteデータクラス生成freezed / json_serializable不変オブジェクトの生成環境変数管理flutter_dotenvAPIキー等の管理3. 機能要件3.1. チャットシステム (Core)対話エンジン: GoogleAiService クラスが Gemini API との通信を担当。初期プロンプト: * キャラクター設定：「感情的に依存し、執着する恋人（メンヘラ気質）」トーン：深い愛情、極度の不安、罪悪感の植え付け、反復的な言い回し。メッセージ送信: ユーザーの入力テキストを送信し、AIからの応答を表示。演出:TypeWriterWidget: AIの返信を一文字ずつ表示し、リアルタイムな入力感を演出。LeftLoadingBubble: 通信中の「入力中...」アニメーション表示。3.2. 演出エフェクト (Horror Effects)ゲームの状態（State）に応じて、以下の画面エフェクトをトリガーする。Shake Effect (EffectShakeScreen): 画面全体を小刻みに振動させる。恐怖や動揺を表現。Rotate Effect (EffectRotateScreen): 画面を傾ける、または回転させる。平衡感覚の喪失や狂気を表現。3.3. 画面構成画面名クラス名概要Initial ScreenInitialScreenアプリ起動時のタイトル画面または導入画面。Home ScreenHomeScreenチャット相手（フレンド）の一覧表示画面。Chat ScreenChatScreenメインのチャットインターフェース。背景画像設定あり。4. データ構造・API仕様4.1. Gemini API レスポンス形式 (JSON)AIは通常のテキストではなく、ゲーム進行制御用のメタデータを含むJSON形式で応答するよう指示される。{
-  "currentScene": "{現在のシーンID}",
-  "nextScene": "{次のシーンID}", 
-  "message": "AIが発言するメッセージ内容"
-}
-currentScene: 現在のストーリー上の位置づけ。nextScene: 次に遷移すべきシーン、またはフラグ。message: ユーザーに表示されるテキスト。4.2. データモデルGameMessageチャット1件分のデータを表現する。message: 表示テキストcurrentScene: シーンIDnextScene: 次シーンIDFriends (Mock/Data)チャット相手のプロフィール情報。id: 一意のIDname: 表示名iconUrl: アイコン画像のパス（アセット）5. デザイン・アセット5.1. テーマ (theme.dart)ベース: ダークテーマ (ThemeData.dark()) ベースか、ホラーテイストのカスタム配色。フォント: システムフォントを使用。5.2. アセット構成assets/backgrounds/:wood.jpg: 木目調の背景（リスト画面等）chat.jpg: チャット画面背景assets/icons/:karikanozyo.jpg: キャラクターアイコン6. 既知の課題・検討事項 (To-Do)JSONパースの堅牢化:Gemini APIがたまに不完全なJSONを返す場合があるため、GoogleAiService 内での例外処理と再試行ロジック、およびJSON補完処理（{}の欠落対策など）が必要。APIキー管理:現在は .env で管理しているが、リリースビルド時の難読化やセキュリティ対策を検討する必要がある。状態管理の永続化:アプリを再起動するとチャット履歴が消えるため、ローカルDB（Isar, Hive, SharedPreferences等）への保存機能が必要。エフェクトのトリガー実装:GameMessage の currentScene や nextScene の値を監視し、特定の値が来た瞬間に EffectShakeScreen などを発火させるロジックの詳細な結合。
+# Title
+AL2025 後期 8班 ホラーチャットアプリ サマリー
+
+# Installization
+インストール方法は二つあります
+
+
+## Phase. 1
+### Flutter開発環境がインストールされていることを前提としています
+
+1. GitHubからこのリポジトリをクローン
+2. クローン後のディレクトリに移動
+3. Flutter環境を初期化
+4. `.env`を作成し，その中に次の記述を追加
+```
+GEMINI_API_KEY={YourApiKey}
+```
+5. この状態で起動
+6. 実行するコマンドは次のとおりです．
+```cmd
+% git clone https://github.com/ShuMasui/horror_chat_app.git
+% flutter pub get
+% touch .env
+% echo "GEMINI_API_KEY={YourApiKey}" > .env
+% flutter run -d chrome
+```
+
+## Plase. 2
+### すでにデプロイされたアプリケーションに触れる方法
+1. [HorrorChatApp](https://al-2025-horror-chat-app.web.app/)にアクセスする
+2. 画面サイズをスマートフォンと同程度の縦長にする
+
+
+
+# How to play
+1. はじめからをクリック（つづきからは未実装）
+2. ゆきちゃんをクリック（リリちゃんは未実装）
+3. チャットを楽しむ
+4. 終了演出は未実装です
+
+
+
+# Approch
+ALの授業において，好きなことを実現するというゴールのもと制作が行われた．
+好きなこととして，チームとして次のことを提案した．
+
+- 物を作ること
+- 面白い要素を取り入れる
+- 怖い要素を入れよう
+- AIを使いたい
+
+これらを実現するためのビジネスストーリーとして，次のものと提案した．
+
+
+
+# Goal
+AIを活用したインタラクティブかつ現代的なホラー体験を提供できる，
+ホラーチャットアプリの開発
+
+
+
+# Achievement
+- 指定されたデザインでのUI開発
+- チャットアプリの開発
+- AIチャットの実装
+- ゲームエンジン（進行管理）の開発
+- Repositoryパターンの採用
+- MVVMモデルの採用
+- GitHubを用いたオンラインコラボレーション
+
+
+
+# Undershooting
+- 予定していたゲームエフェクトの開発が間に合わなかった
+- 全体的なロジックの不足
+- アニメーションの実装
+- リッチエフェクトの実装
+- オンラインコラボレーションの不足
+
+
+
+# In Future
+- シナリオ進行の恒久的な仕組み
+- 未実装のキャラクターの実装
+- セーブ・継続機能の完全実装
+- より没入感を高めるリッチ演出の追加
+  - BGMやハプティクスフィードバックを用いた振動体験
+  - 画面点滅や文字化けなど
+- 物語の終焉を描くエンディング演出
+- チーム開発・管理体制の強化
